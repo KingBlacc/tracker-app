@@ -13,6 +13,7 @@ import SplashScreen from './src/screens/SplashScreen';
 
 import {Provider as AuthProvider} from './src/context/authContext';
 import {setNavigator} from './src/navigationRef';
+import {Provider as LocationProvider} from './src/context/LocationContext';
 
 const switchNavigator = createSwitchNavigator({
   Splash: SplashScreen,
@@ -34,11 +35,13 @@ const App = createAppContainer(switchNavigator);
 
 export default () => {
   return(
+    <LocationProvider>
     <AuthProvider>
-    <App 
-    ref={(navigator) => {
-      setNavigator(navigator) 
+      <App 
+      ref={(navigator) => {
+        setNavigator(navigator) 
       }}/>
-  </AuthProvider>
+    </AuthProvider>
+    </LocationProvider>
   );
 };
