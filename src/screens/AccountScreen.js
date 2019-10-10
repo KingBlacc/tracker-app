@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import {Text, StyleSheet} from 'react-native';
-import { Button } from 'react-native-elements';
+import {StyleSheet} from 'react-native';
+import { Text, Button } from 'react-native-elements';
 import { SafeAreaView } from 'react-navigation';
 import Spacer from '../components/spacer';
 import { Context as AuthContext} from '../context/authContext';
+import {Entypo} from '@expo/vector-icons';
 
 const AccountScreen = () => {
     const { signout } = useContext(AuthContext);
@@ -11,7 +12,9 @@ const AccountScreen = () => {
     return (
         <SafeAreaView
             forceInset={{top: 'always'}}>
-            <Text>Account Screen</Text>
+            <Spacer>
+            <Text h4>Account Screen</Text>
+            </Spacer>
             <Spacer>
                 <Button
                     title='Sign Out'
@@ -19,6 +22,11 @@ const AccountScreen = () => {
             </Spacer>   
         </SafeAreaView>
     );
+};
+
+AccountScreen.navigationOptions = {
+    title: 'Account',
+    tabBarIcon: <Entypo name='user' size={20}/>
 };
 
 const styles = StyleSheet.create({});
